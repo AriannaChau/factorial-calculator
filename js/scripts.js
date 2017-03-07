@@ -1,25 +1,15 @@
-var leapYear = function(year) {
-  if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
-    return true;
-  } else {
-  return false;
-  }
-};
-
 $(function() {
-  $("form#leap-year").submit(function(event) {
+  $("form").submit(function(event) {
     event.preventDefault();
-    var year = parseInt($("input#year").val());
-    var result = leapYear(year);
 
-    $(".year").text(year);
+  var number = parseInt($("#number").val());
+  var total = 1;
+  for (var currentNumber = number; currentNumber >=1; currentNumber -= 1) {
+    total *= currentNumber;
+  }
+  $(".number").text(number);
+  $(".total").text(total);
 
-    if (!result) {
-      $(".not").text("not");
-    } else {
-      $(".not").text("");
-    }
-
-    $("#result").show();
+  $("#output").show();
   });
 });
